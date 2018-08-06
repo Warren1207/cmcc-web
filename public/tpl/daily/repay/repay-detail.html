@@ -1,0 +1,99 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancel()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">详情</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >姓名:</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="name" disabled ng-model="card.owner" >
+                                </div>
+                                <div class="help-block"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >卡号:</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="name" disabled ng-model="card.cardNo" >
+                                </div>
+                                <div class="help-block"> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >银行</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="name" disabled ng-model="card.bankName" >
+                                </div>
+                                <div class="help-block"> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >计划金额:</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="name" disabled ng-model="card.amount" >
+                                </div>
+                                <div class="help-block"> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >实际金额</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="name" ng-model="card.actualAmount" >
+                                </div>
+                                <div class="help-block"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group form-md-line-input " >
+                        <label class="col-md-4 control-label" >还款银行账号<span class="required">*</span></label>
+                        <div class="col-md-8">
+                            <ui-select allow-clear ng-model="card.repayBankCardNo" theme="bootstrap" required="true">
+                                <ui-select-match placeholder="请选择..." class="" >{{$select.selected.value.name}}</ui-select-match>
+                                <ui-select-choices repeat="item.key as (key, item)  in bankNos | filter: { value: { name: $select.search }}">
+                                    <span ng-bind-html="item.value.name | highlight: $select.search" required></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <div class="form-control-focus"> </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-2 control-label" >备注</label>
+                            <div class="col-md-10">
+                                <div class="input-icon right">
+                                    <textarea class="form-control" rows="3" ng-model="poss.remarks"></textarea>
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancel()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">保存</button>
+</div>

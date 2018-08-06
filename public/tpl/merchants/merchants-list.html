@@ -1,0 +1,41 @@
+<h3 class="page-title"> 商户资料列表 </h3>
+<div ng-controller="MerchantsListController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered" id="blockui_sample_1_portlet_body">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-bubble font-green-sharp"></i>
+                        <span class="caption-subject font-green-sharp sbold">商户资料 - 列表</span>
+                    </div>
+                    <div class="actions">
+                        <a ng-click="openAddPage()" class="btn green-haze btn-outline btn-circle btn-sm">
+                            <i class="icon-plus"></i> 新增
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body table-both-scroll">
+                    <table ui-jq="dataTable" ui-options="tableConfig" class="table table-striped table-bordered table-hover order-column" >
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>名称</th>
+                            <th>编号</th>
+                            <th>行业</th>
+                            <th>最大消费金额</th>
+                            <th>最小消费金额</th>
+                            <th>较佳最大消费金额</th>
+                            <th>较佳最小消费金额</th>
+                            <th>最佳消费时间起</th>
+                            <th>最佳消费时间止</th>
+                            <!--<th>pos</th>-->
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

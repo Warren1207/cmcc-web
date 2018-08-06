@@ -1,0 +1,92 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >姓名<span class="required">*</span></label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="name" ng-model="agent.name" required >
+                                    <p ng-show="userForm.username.$error.maxLength" class="help-block">用户太长.</p>
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >身份证号<span class="required">*</span></label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="18" name="name" ng-model="agent.idCardNo" required >
+                                    <p ng-show="userForm.username.$error.maxLength"></p>
+                                </div>
+                                <span class="help-block">填写方式</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >联系方式<span class="required">*</span></label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="11" ng-pattern="/^[0-9]+$/" ng-model="agent.linkPhone" required >
+                                    <span ng-show="userForm.username.$error.maxLength"> </span>
+                                </div>
+                                <span class="help-block">请填写11位数的手机号码，如：18273205882</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >邮箱<span class="required">*</span></label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <input type="email" class="form-control" placeholder="" maxlength="20" name="name" ng-model="agent.email" required >
+                                    <span ng-show="userForm.email.$error.maxLength"> </span>
+                                </div>
+                                <span class="help-block">填写方式，如123@qq.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >微信号</label>
+                            <div class="col-md-9">
+                                <div class="form-control-focus">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="name" ng-model="agent.wxNo" >
+                                    <span ng-show="userForm.username.$error.maxLength"> </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >备注</label>
+                            <div class="col-md-9">
+                                <textarea class="form-control" rows="3" ng-model="agent.remarks"></textarea>
+                                <div class="form-control-focus"> </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">保存</button>
+</div>

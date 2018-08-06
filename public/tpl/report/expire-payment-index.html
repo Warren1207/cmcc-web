@@ -1,0 +1,147 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="form-body">
+                    <div class="form-group form-md-line-input">
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-4 control-label" >卡号</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="" ng-model="fee.cardNo" disabled="true">
+                                <div class="form-control-focus"> </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-4 control-label" >持卡人</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="fee.owner" disabled="true">
+                                <div class="form-control-focus"> </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input">
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-4 control-label" >年份
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-icon input-icon-sm right">
+                                    <input type="text" class="form-control input-sm" ng-model="fee.year" disabled="true">
+                                    <div class="form-control-focus"> </div>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-4 control-label" >期数
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-icon input-icon-sm right">
+                                    <input type="text" class="form-control input-sm" ng-model="fee.number" disabled="true">
+                                    <div class="form-control-focus"> </div>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input">
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-4 control-label" >最晚还款日
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-icon input-icon-sm right">
+                                    <input type="text" class="form-control input-sm" ng-model="fee.rd" disabled="true">
+                                    <div class="form-control-focus"> </div>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-4 control-label" >距离天数
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-icon input-icon-sm right">
+                                    <input type="text" class="form-control input-sm" ng-model="fee.rday" disabled="true">
+                                    <div class="form-control-focus"> </div>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input">
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-4 control-label" >确认金额
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-icon input-icon-sm right">
+                                    <input type="text" class="form-control input-sm" ng-model="fee.confirmationAmount" ng-change="changeAmount()">
+                                    <div class="form-control-focus"> </div>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-4 control-label" >卡片利率
+                            </label>
+                            <div class="col-md-8">
+                                <div class="input-icon input-icon-sm right">
+                                    <input type="text" class="form-control input-sm" disabled ng-model="fee.returnRate" disabled="true">
+                                    <div class="form-control-focus"> </div>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input">
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-4 control-label" >收款金额</label>
+                            <div class="col-md-8">
+                                <div class="input-icon input-icon-sm right">
+                                    <input type="text" class="form-control input-sm" ng-model="fee.projectedFee" disabled="true">
+                                    <div class="form-control-focus"> </div>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-4 control-label" >实收金额</label>
+                            <div class="col-md-8">
+                                <div class="input-icon input-icon-sm right">
+                                    <input type="text" class="form-control input-sm" ng-model="fee.actualFee">
+                                    <div class="form-control-focus"> </div>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-2 control-label" >备注
+                        </label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" rows="3" name="remarks" ng-model="card.remarks"></textarea>
+                            <div class="form-control-focus"> </div>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="{{invalid}}">保存</button>
+</div>

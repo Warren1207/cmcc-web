@@ -1,0 +1,26 @@
+<h3 class="page-title"> 卡片已排期表 </h3>
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered" >
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-bubble font-green-sharp"></i>
+                    <span class="caption-subject font-green-sharp sbold">卡片已排期表 - 列表 ({{profile.currentDate}})</span>
+                </div>
+                <div class="actions">
+                    <a ng-click="regeneration()" class="btn green-haze btn-outline btn-circle btn-sm">
+                        <i class="icon-plus"></i> 重新排期
+                    </a>
+                </div>
+            </div>
+            <!--<div class="portlet-body table-both-scroll">-->
+                <!--<locking-grid colums="colums" source="dataSource" total="total" click="tbClick"></locking-grid>-->
+            <!--</div>-->
+            <div>
+                <table id="jqGrid-already" ></table>
+                <div id="gridpager-already"></div>
+                <table id="jqGrid-d-already"></table>
+            </div>
+        </div>
+    </div>
+</div>

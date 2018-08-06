@@ -1,0 +1,15 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancel()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">区域选择</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <div ui-jq="tree" ui-delay="tree" ></div>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">选择</button>
+</div>

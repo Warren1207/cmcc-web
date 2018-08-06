@@ -1,0 +1,71 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input">
+                            <label class="col-md-4 control-label" >收支</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <select class="form-control" placeholder="" ng-model="gross.status"  name="status">
+                                        <option value="0" selected>收入（+）</option>
+                                        <option value="1">支出（-）</option>
+                                    </select>
+                                </div>
+                                <span class="help-block">	填写方式，如：0收入 1支出</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >金额</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" name="profit" ng-model="gross.profit"  >
+                                </div>
+                                <span class="help-block">填写方式，如：100.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >备注</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder=""  name="remarks" ng-model="gross.remarks"  >
+                                </div>
+                                <span class="help-block">填写方式，如：员工工资</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group form-md-line-input">
+                        <label class="col-md-4 control-label" >日期</label>
+                        <div class="col-md-8">
+                            <div class="has-success">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control"  data-date-format="yyyy-mm-dd"  data-date-zIndexOffset="100" data-date-pickerposition="bottom-left" data-provide="datepicker" placeholder="" ng-model="gross.grossDate" name="grossDate">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </div>
+                                <span class="help-block">填写格式: YYYY-MM-DD ;如: 2018-08-03</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">保存</button>
+</div>

@@ -1,0 +1,70 @@
+<div class="portlet yellow-lemon box">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i> {{column.name}} </div>
+        <div class="tools">
+            <div class="btn-group btn-group-devided" data-toggle="buttons" ng-click="newColumn()">
+                <label class="btn btn-transparent grey-salsa btn-circle btn-sm">新增</label>
+            </div>
+            <div class="btn-group btn-group-devided" data-toggle="buttons" ng-click="editColumn()">
+                <label class="btn btn-transparent grey-salsa btn-circle btn-sm">编辑</label>
+            </div>
+            <div class="btn-group btn-group-devided" data-toggle="buttons" ng-click="removeColumn()">
+                <label class="btn btn-transparent grey-salsa btn-circle btn-sm">删除</label>
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <form class="form-horizontal">
+            <div class="form-body">
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" >栏目名称 </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-model="column.name" disabled="true">
+                        <div class="form-control-focus"> </div>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" >上级目录 </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-model="column.parentName" disabled="true">
+                        <div class="form-control-focus"> </div>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" > 图标 </label>
+                    <div class="col-md-9">
+                        <p class="form-control-static"><i class="{{column.icon}}"></i> </p>
+                    </div>
+                </div>
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" > 路由 </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-model="column.routerName" disabled="true">
+                        <div class="form-control-focus"> </div>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" > 排序 </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-model="column.seq" disabled="true">
+                        <div class="form-control-focus"> </div>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="form-group form-md-line-input">
+                    <label class="col-md-2 control-label" > 备注 </label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-model="column.remarks" disabled="true">
+                        <div class="form-control-focus"> </div>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

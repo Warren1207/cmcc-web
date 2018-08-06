@@ -1,0 +1,284 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >名称:<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="name" ng-model="poss.name" required >
+                                </div>
+                                <div class="help-block"> 填写方式，如：服装城-李浩 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >所属平台<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="poss.platform" theme="bootstrap" required="true">
+                                    <ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in platforms | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >设备编号<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" name="posNo" ng-model="poss.posNo"  required>
+                                </div>
+                                <span class="help-block">填写方式，如：qInL113411561</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >设备型号<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" name="modelNo" ng-model="poss.modelNo"  required>
+                                </div>
+                                <span class="help-block">填写方式，如：新国都K301</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >地域<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="poss.cityCode" theme="bootstrap" required="true">
+                                    <ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in areas | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >所属人员 <span class="required">*</span></label>
+                            <!--<div class="col-md-8">-->
+                                <!--<div class="input-icon right">-->
+                                    <!--<input type="text" class="form-control" ng-model="poss.ownerName" name="ownerName" required>-->
+                                <!--</div>-->
+                                <!--<span class="help-block"></span>-->
+                            <!--</div>-->
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="poss.ownerName" theme="bootstrap" required="true">
+                                    <ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in ownerName | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >结算银行<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="poss.bankId" theme="bootstrap" required="true">
+                                    <ui-select-match placeholder="请选择..." class="" >{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in banks | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search" required></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >银行卡号<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="bankCardNo" ng-model="poss.cardNo" required>
+                                    <p ng-show="userForm.username.$error.maxLength"></p>
+                                </div>
+                                <span class="help-block">填写方式，如：6229180030959128</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >pos类型<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <select class="form-control" uix-select="POSType" ng-model="poss.posType" required></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >每日限额<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" ng-maxlength="20" ng-model="poss.dayLimit" required>
+                                    <p ng-show="userForm.username.$error.maxLength"></p>
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >pos组编号<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" name="groupId" ng-pattern="/^[0-9]+$/" ng-model="poss.groupId" required>
+                                </div>
+                                <span class="help-block">填写方式，如：1,2,3.....</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >到账方式<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="poss.accountWay" theme="bootstrap" required="true">
+                                    <ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in accountWay | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >T+0利息率(‰)</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20"  name="t0costRate" ng-model="poss.t0costRate"  >
+                                </div>
+                                <span class="help-block">填写方式，如: 7.00%</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input">
+                            <label class="col-md-4 control-label " >T+0利息费用</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20"  name="t0costFee" ng-model="poss.t0costFee" >
+                                </div>
+                                <span class="help-block">填写方式，如: 100.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >T+1利息率(‰) </label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20"  name="t1costRate" ng-model="poss.t1costRate"  >
+                                </div>
+                                <span class="help-block">填写方式，如: 7.00</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input">
+                            <label class="col-md-4 control-label " >T+1利息费用</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20"  name="t1costFee" ng-model="poss.t1costFee" >
+                                </div>
+                                <span class="help-block">填写方式，如: 100.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >选择商户方式 </label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <!--<input type="text" class="form-control" placeholder="" maxlength="20" ng-pattern="/^[0-1]+$/" name="merchantChooseType" ng-model="poss.merchantChooseType"  >-->
+                                    <select class="form-control " ng-model="poss.merchantChooseType">
+                                        <option value="0" selected>系统随机选</option>
+                                        <option value="1">人工选择商户</option>
+                                    </select>
+                                </div>
+                                <span class="help-block">填写方式：0-系统随机选 1-人工选择商户</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-2 control-label" >支持芯片<span class="required">*</span></label>
+                            <div class="col-md-10">
+                                <div class="md-radio-inline">
+                                    <div class="md-radio " >
+                                        <input type="radio" id="radio16" ng-value=true name="isSupportChip" ng-model="poss.isSupportChip" class="md-radiobtn" >
+                                        <label for="radio16">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span> 支持 </label>
+                                    </div>
+                                    <div class="md-radio ">
+                                        <input type="radio" id="radio17" ng-value=false name="isSupportChip"  ng-model="poss.isSupportChip"  class="md-radiobtn" checked>
+                                        <label for="radio17">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span> 不支持 </label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-2 control-label" >是否固定商户<span class="required">*</span></label>
+                            <div class="col-md-10">
+                                <div class="md-radio-inline ">
+                                    <div class="md-radio ">
+                                        <input type="radio" id="radio20" ng-value=true name="isFixed" ng-model="poss.isFixed" class="md-radiobtn">
+                                        <label for="radio20">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span> 是 </label>
+                                    </div>
+                                    <div class="md-radio ">
+                                        <input type="radio" id="radio21" ng-value=false name="isFixed"  ng-model="poss.isFixed"  class="md-radiobtn" checked>
+                                        <label for="radio21">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span> 否 </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-2 control-label" >备注</label>
+                            <div class="col-md-10">
+                                <div class="input-icon right">
+                                    <textarea class="form-control" rows="3" ng-model="poss.remarks"></textarea>
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">保存</button>
+</div>

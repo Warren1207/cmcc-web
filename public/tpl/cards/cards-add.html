@@ -1,0 +1,406 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >卡号<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" ng-pattern="/^[0-9]+$/" ng-model="card.cardNo" required name="cardNo">
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >持卡人<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon input-icon-sm right">
+                                    <input type="text" class="form-control input-sm" disabled ng-model="card.owner" required name="cardNo">
+                                    <i class="fa fa-search font-green" ng-click="selectOwner()"  ng-hide="showSelectBtn"></i>
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >发卡行<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="card.bankId" theme="bootstrap">
+                                    <ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in banks | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >安全码<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" ng-model="card.securityCode" required>
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >固定额度<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" number="true" ng-model="card.fixedAmount" required name="fixedAmount">
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >临时额度<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" ng-model="card.tmpAmount" placeholder="" required name="tmpAmount">
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >账单日<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="number" class="form-control" ng-model="card.statementDate" maxlength="2" required name="statementDate">
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >还款日<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="number" class="form-control" ng-model="card.paymentDate" maxlength="2" required name="paymentDate">
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >约定缴费日<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="number" class="form-control" ng-model="card.repaymentDate" maxlength="2"  required name="repaymentDate">
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >最晚还款日<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="number" class="form-control" ng-model="card.lastPaymentDate" maxlength="2"  required name="lastPaymentDate">
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >卡片有效期<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="has-success">
+                                    <div class="input-icon right">
+                                        <input type="text" class="form-control" required data-date-zIndexOffset="100" ng-model="card.expireDate" name="expireDate">
+                                        <!--<i class="glyphicon glyphicon-calendar"></i>-->
+                                    </div>
+                                    <span class="help-block">填写格式: YYYY-MM ;如: 2018-08</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >代还额度<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" required  ng-model="card.payInReturn" name="riskInfo">
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >是否分期</label>
+                            <div class="col-md-8">
+                                <select class="form-control " ng-model="card.stages">
+                                    <option value="0" selected>否</option>
+                                    <option value="1">是</option>
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >代还利率(%)<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" required ng-model="card.returnRate" name="returnRate">
+                                </div>
+                                <span class="help-block">代还利率 e.g: 1.5</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >单笔还款最大比例<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <select class="form-control" uix-select="repaymentRate" ng-model="card.maxSingleRepaymentRate" required></select>
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >风控等级<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="number" class="form-control" required ng-model="card.riskLevel" name="riskLevel">
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >风控信息<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" required ng-model="card.riskInfo" name="riskInfo">
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >状态<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <select class="form-control " ng-model="card.status">
+                                    <option value="0" selected>有效</option>
+                                    <option value="1">失效</option>
+                                </select>
+                                <div class="form-control-focus "> </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >是否退卡<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <select class="form-control " ng-model="card.isBack">
+                                    <option value="0" selected>否</option>
+                                    <option value="1">是</option>
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--<div class="form-group form-md-line-input">-->
+                        <!--<div class="col-md-6 form-group">-->
+                            <!--<label class="col-md-4 control-label" >贷款额度<span class="required">*</span>-->
+                            <!--</label>-->
+                            <!--<div class="col-md-8">-->
+                                <!--<input type="text" class="form-control" required ng-model="card.loanLimit" name="loanLimit">-->
+                                <!--<div class="form-control-focus"> </div>-->
+                                <!--<span class="help-block"></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-6 form-group">-->
+                            <!--<label class="col-md-4 control-label" >贷款利率<span class="required">*</span>-->
+                            <!--</label>-->
+                            <!--<div class="col-md-8">-->
+                                <!--<input type="text" class="form-control" required ng-model="card.loanRate" name="loanRate">-->
+                                <!--<div class="form-control-focus"> </div>-->
+                                <!--<span class="help-block"></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >策略<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="card.strategyId" theme="bootstrap">
+                                    <ui-select-match placeholder="请选择..." required class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in strategy| filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >归属人<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="card.agentId" theme="bootstrap" >
+                                    <ui-select-match placeholder="请选择..." class="" required>{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in agent | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >还款操作员<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="card.defaultOperId" theme="bootstrap">
+                                    <ui-select-match placeholder="请选择..." class="" required>{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in teant | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-md-line-input ">
+                        <label class="col-md-2 control-label" >卡片安全类型<span class="required">*</span></label>
+                        <div class="col-md-10">
+                            <div class="md-radio-inline">
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio14" name="radio2" class="md-radiobtn" value="0" required checked ng-model="card.cardType">
+                                    <label for="radio14">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 未知 </label>
+                                </div>
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio15" name="radio2" class="md-radiobtn" value="1" required ng-model="card.cardType">
+                                    <label for="radio15">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 芯片卡 </label>
+                                </div>
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio16" name="radio2" class="md-radiobtn" value="2" required ng-model="card.cardType">
+                                    <label for="radio16">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 磁条卡 </label>
+                                </div>
+                            </div>
+
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group form-md-line-input ">
+                        <label class="col-md-2 control-label" >计息方式<span class="required">*</span></label>
+                        <div class="col-md-10">
+                            <div class="md-radio-inline">
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio24" name="radio3" class="md-radiobtn" value="0" required checked ng-model="card.interestType" >
+                                    <label for="radio24">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 未知 </label>
+                                </div>
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio25" name="radio3" class="md-radiobtn" value="1" required ng-model="card.interestType" >
+                                    <label for="radio25">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 等额本息 </label>
+                                </div>
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio26" name="radio3" class="md-radiobtn" value="2" required ng-model="card.interestType" >
+                                    <label for="radio26">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 等额本金 </label>
+                                </div>
+                            </div>
+
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group form-md-line-input ">
+                        <label class="col-md-2 control-label" >支持闪付<span class="required">*</span></label>
+                        <div class="col-md-10">
+                            <div class="md-radio-inline">
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio34" name="radio4" class="md-radiobtn" value="0" required checked ng-model="card.isSupportQuickass" >
+                                    <label for="radio34">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 支持 </label>
+                                </div>
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio35" name="radio4" class="md-radiobtn" value="1" required ng-model="card.isSupportQuickass" >
+                                    <label for="radio35">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 不支持 </label>
+                                </div>
+                            </div>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-2 control-label" >备注
+                        </label>
+                        <div class="col-md-10">
+                            <div class="input-icon right">
+                                <textarea class="form-control" rows="3" name="remarks" ng-model="card.remarks"></textarea>
+                            </div>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">保存</button>
+</div>

@@ -1,0 +1,30 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancel()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">持卡人列表--双击选择</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <table ui-jq="dataTable" ui-options="tableConfig" class="table table-striped b-t b-b">
+                    <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>别名</th>
+                        <th>身份证号</th>
+                        <th>微信号</th>
+                        <th>手机号</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>

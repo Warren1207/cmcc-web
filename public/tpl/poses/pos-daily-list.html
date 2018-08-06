@@ -1,0 +1,36 @@
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered" >
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-bubble font-green-sharp"></i>
+                        <span class="caption-subject font-green-sharp sbold">每日POS资源列表</span>
+                    </div>
+                    <div class="actions">
+                        <a ng-click="openAddPage()" class="btn green-haze btn-outline btn-circle btn-sm">
+                            <i class="icon-plus"></i> 产生今日POS表
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body table-both-scroll">
+                    <table ui-jq="dataTable" ui-options="tableConfig" class="table table-striped table-bordered table-hover order-column" >
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>日期</th>
+                            <th>地域</th>
+                            <th>POS 1</th>
+                            <th>POS 2</th>
+                            <th>POS 3</th>
+                            <th>POS 4</th>
+                            <th>POS 5</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

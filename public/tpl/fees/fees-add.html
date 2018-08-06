@@ -1,0 +1,84 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >编号<span class="required">*</span></label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="creditCardNo" ng-model="fee.creditCardNo" required >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >执行日期</label>
+                            <div class="col-md-8">
+                                <div class="input-group has-success right">
+                                    <span class="input-group-addon"> <i class="fa fa-calendar"> </i> </span>
+                                    <input class="form-control date-picker" data-provide="datepicker" size="16" type="text" name="bestMaxAmount" ng-model="marchant.bestMaxAmount"/>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >收/支<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="marchant.platformKey" theme="bootstrap">
+                                    <ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in platforms | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >类型</label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="marchant.platformKey" theme="bootstrap">
+                                    <ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in platforms | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >金额<span class="required">*</span></label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="creditCardNo" ng-model="fee.creditCardNo" required >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled={{invalid}}>保存</button>
+</div>

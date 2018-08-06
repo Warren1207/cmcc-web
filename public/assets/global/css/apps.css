@@ -1,0 +1,13 @@
+.dataTable th {
+    white-space: nowrap !important;
+}
+
+.mt-card-social>ul {
+    padding: 0;
+    margin-bottom:0px;
+}
+.mt-card-social>ul>li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 3px;
+}

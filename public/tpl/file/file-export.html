@@ -1,0 +1,49 @@
+<div class="row" style="margin-top: 15px">
+    <div class="col-md-12">
+        <div class="mt-element-list">
+            <div class="mt-list-head list-simple ext-1 font-white bg-green-sharp">
+                <div class="list-head-title-container">
+                    <div class="list-date"></div>
+                    <h3 class="list-title">导出向导</h3>
+                </div>
+            </div>
+            <div class="mt-list-container list-simple ext-1">
+                <ul>
+                    <li class="mt-list-item done">
+                        <div class="list-icon-container">
+                            <i class="icon-check"></i>
+                        </div>
+                        <div class="list-datetime">  </div>
+                        <div class="list-item-content">
+                            <h3 class="uppercase">
+                                <a target="_blank" href="{{action.currentPage}}">导出当页</a>
+                            </h3>
+                        </div>
+                    </li>
+                    <li class="mt-list-item">
+                        <div class="list-icon-container">
+                            <i class="icon-close"></i>
+                        </div>
+                        <div class="list-datetime">  </div>
+                        <div class="list-item-content">
+                            <h3 class="uppercase">
+                                <a target="_blank" href="{{action.allPage}}">导出全页</a>
+                            </h3>
+                        </div>
+                    </li>
+                    <li class="mt-list-item">
+                        <div class="list-icon-container">
+                            <i class="icon-close"></i>
+                        </div>
+                        <div class="list-datetime">  </div>
+                        <div class="list-item-content">
+                            <h3 class="uppercase">
+                                <a ng-click="cancel()">取消</a>
+                            </h3>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

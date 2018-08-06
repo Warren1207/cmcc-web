@@ -1,0 +1,22 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancel()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">日志详情</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <table ui-jq="dataTable" ui-options="tableConfig" class="table table-striped table-bordered table-hover order-column" >
+        <thead>
+        <tr>
+            <th>卡号</th>
+            <th>日志</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancel()">关闭</button>
+</div>

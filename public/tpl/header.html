@@ -1,0 +1,47 @@
+<!-- BEGIN HEADER INNER -->
+<div class="page-header-inner">
+    <!-- BEGIN LOGO -->
+    <div class="page-logo">
+        <div class="menu-toggler sidebar-toggler">
+            <span></span>
+            <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+        </div>
+    </div>
+    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+        <span></span>
+    </a>
+    <div class="page-top">
+        <div class="search-form" style="width: 70% !important;  height: 49px;">
+            <div class="tabbable-custom ">
+                <ul class="nav nav-tabs ">
+                    <li ng-class="{true : 'active',false : ''}[header.url == currentUrl]" ng-repeat="header in headerArray">
+                        <a ng-click="selectTab(header)" data-toggle="tab">
+                            {{header.text}} &nbsp;&nbsp;
+                            <i class="fa fa-times" ng-click="closeTab($event,header)" style="float: right;cursor: pointer;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="top-menu">
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown dropdown-user">
+                    <a href="#" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
+                        <img alt="" class="img-circle" src="{{settings.layoutPath}}/img/avatar3_small.jpg" />
+                        <span class="username username-hide-on-mobile"> {{profile.realName}} </span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+
+                        <li>
+                            <a href="/logout">
+                                <i class="icon-key"></i> 退出 </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</div>

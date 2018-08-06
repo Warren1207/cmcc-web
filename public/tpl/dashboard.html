@@ -1,0 +1,98 @@
+<h3 class="page-title paget-desktop-title" ng-if="isDesktop "> 主页 </h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="paget-desktop-content" ng-if="isDesktop">
+
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat blue">
+                <div class="visual">
+                    <i class="fa fa-comments"></i>
+                </div>
+                <div class="details">
+                    <div class="number"> {{desktops.owner}} </div>
+                    <div class="desc"> 持卡人 </div>
+                </div>
+                <a class="more" href="#/customerList"> 更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat red">
+                <div class="visual">
+                    <i class="fa fa-bar-chart-o"></i>
+                </div>
+                <div class="details">
+                    <div class="number"> {{desktops.card}} </div>
+                    <div class="desc"> 卡片 </div>
+                </div>
+                <a class="more" href="#"> 更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat green">
+                <div class="visual">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="details">
+                    <div class="number"> {{desktops.repay}} </div>
+                    <div class="desc"> 还款金额 </div>
+                </div>
+                <a class="more" href="#"> 更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat purple">
+                <div class="visual">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <div class="details">
+                    <div class="number"> {{desktops.pospay}}</div>
+                    <div class="desc"> 刷卡金额 </div>
+                </div>
+                <a class="more" href="#"> 更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- END DASHBOARD STATS -->
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="portlet solid bordered light-grey">
+                <div class="portlet-title">
+                    <div class="caption"><i class="icon-bar-chart"></i>毛利走势图</div>
+                    <div class="tools">
+                        <div class="btn-group pull-right" data-toggle="buttons-radio">
+                            <a href="" class="btn mini">毛利</a>
+                            <!--
+                            <a href="" class="btn mini active">Feedbacks</a>
+-->
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div id="site_statistics_loading">
+                        <img src="/media/image/loading.gif" alt="loading"/>
+                    </div>
+                    <div id="site_statistics_content" class="hide">
+                        <div id="site_statistics" class="chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- END MAIN CONTENT -->
+<div class="row desktop-pagelist-ccms"></div>
+<!-- BEGIN MAIN JS & CSS -->
+<script>
+
+</script>
+<!-- BEGIN MAIN JS & CSS -->

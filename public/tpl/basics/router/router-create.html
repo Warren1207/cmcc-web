@@ -1,0 +1,77 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body" >
+
+    <div class="panel-body">
+        <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">外部名称:</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control ng-dirty"  required ng-model="router.outerName" >
+                </div>
+                <label class="col-lg-2 control-label">内部名称:</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control ng-dirty"  required ng-model="router.innerName" >
+                </div>
+            </div>
+            <div class="form-group">
+
+                <label class="col-lg-2 control-label">外部请求:</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control ng-dirty" required ng-model="router.outerUrl" >
+                </div>
+                <label class="col-lg-2 control-label">内部请求:</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control "   ng-model="router.innerUrl" >
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">虚拟路由:</label>
+                <div class="col-lg-10">
+                    <label class="mt-checkbox mt-checkbox-outline mt-checkbox-single">
+                        <input type="checkbox" class="group-checkable" checked ng-model="router.abstracted" >
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">控制器:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control"  ng-model="router.controller" >
+                </div>
+            </div>
+            <div class="form-group" ng-show="!router.abstracted">
+                <label class="col-lg-2 control-label">请求内容:</label>
+                <div class="col-lg-10">
+                    <textarea class="form-control"  ng-model="router.context"></textarea>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">包含文件:</label>
+                <div class="col-lg-10"><!-- ui-jq="tagsinput" -->
+                    <div class="input-group m-b" ng-repeat="row in router.resolve">
+                        <input type="text" ng-model="row.path" class="form-control child-router-name" >
+                        <span class="input-group-addon" ng-click="addChild()">+</span>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">保存</button>
+</div>

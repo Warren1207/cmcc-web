@@ -1,0 +1,138 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >名称<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="name" ng-model="merchant.name" required >
+                                </div>
+                                <span class="help-block">填写方式，如: 服装城</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label " >商户编号<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="merchantNo" ng-model="merchant.merchantNo" required >
+                                </div>
+                                <span class="help-block">填写方式，如: 301372359980000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >行业<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="industry" ng-model="merchant.industry" required >
+                                </div>
+                                <span class="help-block">填写方式，如: 服装业</span>
+                            </div>
+                        </div>
+                        <!--<div class="col-md-6 form-group form-md-line-input ">-->
+                            <!--<label class="col-md-4 control-label" >POS </label>-->
+                            <!--<div class="col-md-8">-->
+                                <!--<ui-select allow-clear ng-model="merchant.posId" theme="bootstrap" >-->
+                                    <!--<ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>-->
+                                    <!--<ui-select-choices repeat="item.key as (key, item)  in poss | filter: { value: { name: $select.search }}">-->
+                                        <!--<span ng-bind-html="item.value.name | highlight: $select.search"></span>-->
+                                    <!--</ui-select-choices>-->
+                                <!--</ui-select>-->
+                                <!--<span class="help-block"></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >最大消费金额</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" ng-pattern="/^[0-9]+$/" name="maxAmount" ng-model="merchant.maxAmount"  >
+                                </div>
+                                <span class="help-block">填写方式，如: 1000元</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input">
+                            <label class="col-md-4 control-label " >最小消费金额</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" ng-pattern="/^[0-9]+$/" name="minAmount" ng-model="merchant.minAmount" >
+                                </div>
+                                <span class="help-block">填写方式，如: 10元</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >较佳最大消费金额</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" ng-pattern="/^[0-9]+$/" name="bestMaxAmount" ng-model="merchant.bestMaxAmount"  >
+                                </div>
+                                <span class="help-block">填写方式，如: 5000元</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input">
+                            <label class="col-md-4 control-label " >较佳最小消费金额</label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" ng-pattern="/^[0-9]+$/" name="bestMinAmount" ng-model="merchant.bestMinAmount" >
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >最佳消费时间起 </label>
+                            <div class="col-md-8">
+                                <div class="has-success input-icon right">
+                                    <input type="text" class="form-control"  data-date-zIndexOffset="100" ng-model="merchant.startBestTime" name="startBestTime">
+                                    <!--<i class="glyphicon glyphicon-calendar"></i>-->
+                                </div>
+                                <span class="help-block">填写方式: HH-mm ，如: 14:30</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input">
+                            <label class="col-md-4 control-label " >最佳消费时间止</label>
+                            <div class="col-md-8">
+                                <div class="has-success input-icon right">
+                                    <input type="text" class="form-control"  data-date-zIndexOffset="100" ng-model="merchant.endBestTime" name="endBestTime">
+                                    <!--<i class="glyphicon glyphicon-calendar"></i>-->
+                                </div>
+                                <span class="help-block">填写方式: HH-mm ，如: 14:30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-2 control-label" >备注</label>
+                        <div class="col-md-10">
+                            <div class="input-icon right">
+                                <textarea class="form-control" rows="3" ng-model="merchant.remarks"></textarea>
+                            </div>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">保存</button>
+</div>

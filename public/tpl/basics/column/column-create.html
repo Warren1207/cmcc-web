@@ -1,0 +1,65 @@
+<div class="modal-header" >
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">&times;</button>
+    <h3>{{title}}</h3>
+</div>
+<div class="modal-body" >
+
+    <div class="panel-body">
+        <form class="form-validation form-horizontal" name="form"  method="post" novalidate>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">栏目名称:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control ng-dirty"  required ng-model="column.name" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">上级栏目:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" disabled  ng-model="column.parentName" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">图标:</label>
+                <div class="col-lg-10">
+                    <div class="input-group m-b">
+                        <input type="hidden" class="form-control "   >
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="addIconFun()">
+                                <i class="{{column.icon}}"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">路由:</label>
+                <div class="col-lg-10">
+                    <div class="input-group m-b">
+                        <input type="text" class="form-control"  ng-model="column.routerName" ng-disabled="true">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="removeRouter()" ng-hide="!column.routerId">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button class="btn btn-default" ng-click="selectedRouter()">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-2 control-label">序号:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control "   ng-model="column.seq" >
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="cancel()">关闭</button>
+    <button type="button" class="btn btn-default btn-danger" ng-disabled="form.$invalid" ng-click="ok(form.$valid)">保存</button>
+</div>

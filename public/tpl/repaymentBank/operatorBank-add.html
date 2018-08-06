@@ -1,0 +1,105 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input ">
+                            <label class="col-md-4 control-label" >操作员 <span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="operatorBank.operatorId" theme="bootstrap" required="true">
+                                    <ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in operators | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >银行卡号:<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" ng-pattern="/^[0-9]+$/"maxlength="20" name="bankCardNo" ng-model="operatorBank.bankCardNo" required >
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >银行<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="operatorBank.bankId" theme="bootstrap" required="true">
+                                    <ui-select-match placeholder="请选择..." class="" >{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in banks | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search" required></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >卡主:<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" name="name" ng-model="operatorBank.bankOwner" required >
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-2 control-label" >是否默认还款银行<span class="required">*</span></label>
+                            <div class="col-md-10">
+                                <div class="md-radio-inline ">
+                                    <div class="md-radio ">
+                                        <input type="radio" id="radio20" ng-value=true name="defaultBank" ng-model="operatorBank.defaultBank" class="md-radiobtn" required>
+                                        <label for="radio20">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span> 是 </label>
+                                    </div>
+                                    <div class="md-radio ">
+                                        <input type="radio" id="radio21" ng-value=false name="defaultBank"  ng-model="operatorBank.defaultBank"  class="md-radiobtn" checked>
+                                        <label for="radio21">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span> 否 </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-2 control-label" >备注</label>
+                            <div class="col-md-10">
+                                <div class="input-icon right">
+                                    <textarea class="form-control" rows="3" ng-model="operatorBank.remarks"></textarea>
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">保存</button>
+</div>

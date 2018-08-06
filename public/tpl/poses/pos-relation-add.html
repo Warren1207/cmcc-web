@@ -1,0 +1,49 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group ">
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >POS <span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="possRelation.posId" theme="bootstrap" required="true">
+                                    <ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in poss | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group form-md-line-input " >
+                            <label class="col-md-4 control-label" >商户<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <ui-select allow-clear ng-model="possRelation.merchantId" theme="bootstrap" required="true">
+                                    <ui-select-match placeholder="请选择..." class="">{{$select.selected.value.name}}</ui-select-match>
+                                    <ui-select-choices repeat="item.key as (key, item)  in merchants | filter: { value: { name: $select.search }}">
+                                        <span ng-bind-html="item.value.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">保存</button>
+</div>

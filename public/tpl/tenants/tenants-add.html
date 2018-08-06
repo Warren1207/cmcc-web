@@ -1,0 +1,172 @@
+<div class="modal-header" style="padding-top:32px">
+    <button type="button" class="close" ng-click="cancle()"  aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <div class="caption">
+            <i class=" icon-layers font-red"></i>
+            <span class="caption-subject font-red sbold uppercase">{{title}}</span>
+        </div>
+    </h4>
+</div>
+<div class="modal-body">
+    <form class="form-validation form-horizontal" method="post" name="form" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >姓名<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" ng-model="tenants.name" required >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >代码<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" ng-model="tenants.code" required >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >身份证号<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" ng-model="tenants.idCardNo" required >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >联系方式<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" ng-pattern="/^[0-9]+$/" placeholder="" maxlength="11" ng-model="tenants.linkPhone" required >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >邮箱<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="email" class="form-control" placeholder="" maxlength="20" ng-model="tenants.email" required >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >区域<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon input-icon-sm right">
+                                    <input type="text" class="form-control" disabled ng-model="tenants.address" required >
+                                    <i class="fa fa-search font-green" ng-click="selectReg()" ng-hide="tenants.address.$dirty"></i>
+                                    <i class="fa fa-search font-green" ng-click="selectShow()" ng-show="tenants.address.$dirty"></i>
+                                </div>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input ">
+                        <label class="col-md-3 control-label" >终端代理商<span class="required">*</span></label>
+                        <div class="col-md-8">
+                            <div class="md-radio-inline">
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio15" name="radio2" class="md-radiobtn" value="1" required ng-model="tenants.isLeaf">
+                                    <label for="radio15">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 是 </label>
+                                </div>
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio16" name="radio2" class="md-radiobtn" value="0" required ng-model="tenants.isLeaf">
+                                    <label for="radio16">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 否 </label>
+                                </div>
+                            </div>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input " >
+                        <label class="col-md-3 control-label" >直营<span class="required">*</span></label>
+                        <div class="col-md-8">
+                            <div class="md-radio-inline">
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio17" name="radio3" class="md-radiobtn" value="1" required ng-model="tenants.isTerminal">
+                                    <label for="radio17">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 是 </label>
+                                </div>
+                                <div class="md-radio ">
+                                    <input type="radio" id="radio18" name="radio3" class="md-radiobtn" value="0" required ng-model="tenants.isTerminal">
+                                    <label for="radio18">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> 否 </label>
+                                </div>
+                            </div>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="tenants.isTerminal==1">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >上级代理<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" placeholder="" maxlength="20" ng-model="tenants.parentName" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input " >
+                            <label class="col-md-3 control-label" >预估成本比例<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" required ng-model="tenants.costRate" name="returnRate">
+                                </div>
+                                <span class="help-block">如资金成本费率水电人工比例 e.g: 1.3</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-md-12 form-group form-md-line-input" >
+                            <label class="col-md-3 control-label" >过期日期<span class="required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-group has-success right">
+                                    <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+                                    <input class="form-control date-picker" data-date-format="yyyy-mm-dd" data-date-zIndexOffset="100" data-provide="datepicker" size="16" type="text" ng-model="tenants.expireDateString"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-3 control-label" >备注
+                        </label>
+                        <div class="col-md-8">
+                            <div class="input-icon right">
+                                <textarea class="form-control" rows="3" name="remarks" ng-model="tenants.remarks"></textarea>
+                            </div>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn default" data-dismiss="modal" ng-click="cancle()">关闭</button>
+    <button type="submit" class="btn blue" ng-click="ok(form.$valid)" ng-disabled="form.$invalid">保存</button>
+</div>
