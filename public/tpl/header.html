@@ -1,45 +1,42 @@
-<!-- BEGIN HEADER INNER -->
 <div class="page-header-inner">
-    <!-- BEGIN LOGO -->
     <div class="page-logo">
-        <div class="menu-toggler sidebar-toggler">
-            <span></span>
-            <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-        </div>
+        <img src="../img/logo.png" height="53" width="62"/>
     </div>
-    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-        <span></span>
-    </a>
-    <div class="page-top">
-        <div class="search-form" style="width: 70% !important;  height: 49px;">
-            <div class="tabbable-custom ">
-                <ul class="nav nav-tabs ">
-                    <li ng-class="{true : 'active',false : ''}[header.url == currentUrl]" ng-repeat="header in headerArray">
-                        <a ng-click="selectTab(header)" data-toggle="tab">
-                            {{header.text}} &nbsp;&nbsp;
-                            <i class="fa fa-times" ng-click="closeTab($event,header)" style="float: right;cursor: pointer;"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <div class="page-header-inner-title">
+        <span class="head-text-zh">
+            小明管家数据分析统计平台
+        </span>
+        </br>
+        <span class="head-text-en">
+            Xiaoming housekeeper Data analysis and Statistics Platform
+        </span>
+    </div>
+    <div class="page-top" style="float: right;">
+        <div class="page-header-search-group">
+            <input type="text" class="form-control input-sm" placeholder="请输入搜索内容..." name="query">
+            <span class="icon-magnifier search-btn"></span>
         </div>
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
                 <li class="dropdown dropdown-user">
-                    <a href="#" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle" src="{{settings.layoutPath}}/img/avatar3_small.jpg" />
-                        <span class="username username-hide-on-mobile"> {{profile.realName}} </span>
-                        <i class="fa fa-angle-down"></i>
+                    <a href="#" class="dropdown-toggle">
+                        <img alt="" class="img-circle" src="img/avatar.png" />
+                        <span class="username username-hide-on-mobile"> 欢迎，{{profile.realName}} </span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-default">
-
-                        <li>
-                            <a href="/logout">
-                                <i class="icon-key"></i> 退出 </a>
-                        </li>
-                    </ul>
                 </li>
-
+                <li class="dropdown dropdown-user">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-bell icon-font-common"></i>
+                        <span class="badge badge-default"> 4 </span>
+                        <span class="username username-hide-on-mobile" style="padding-left: 8px;">消息 </span>
+                    </a>
+                </li>
+                <li class="dropdown dropdown-user">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="glyphicon glyphicon-log-out icon-font-common"></i>
+                        <span class="username username-hide-on-mobile" style="padding-left: 7px;">退出 </span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

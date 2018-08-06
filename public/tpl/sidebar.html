@@ -1,39 +1,23 @@
 <div class="page-sidebar navbar-collapse collapse">
     <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200"
         ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
-        <li class="sidebar-search-wrapper">
-            <form class="sidebar-search sidebar-search-bordered" action="#" method="POST">
-                <a href="javascript:;" class="remove">
-                    <i class="icon-close"></i>
-                </a>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <a href="javascript:;" class="btn submit">
-                            <i class="icon-magnifier"></i>
-                        </a>
-                    </span>
-                </div>
-            </form>
-            <!-- END RESPONSIVE QUICK SEARCH FORM -->
+        <li class="sidebar-search-wrapper first-group">
+            <i class="glyphicon glyphicon-th-list"></i>
+            <span class="title">功能导航</span>
         </li>
         <li class="nav-item" ng-repeat="menu in menus">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="{{menu.icon}}"></i>
                 <span class="title">{{menu.text}}</span>
                 <span ng-class="{'arrow' : menu.children.length>0}"></span>
-                <!--<span class="badge badge-danger">5</span>-->
             </a>
             <ul class="sub-menu" ng-if="menu.children.length>0">
                 <li ng-repeat="child in menu.children">
-                    <a ng-click="hrefUrl(child)" > <!-- ui-sref="{{child.url}}" ng-click="hrefUrl(child)"-->
+                    <a ng-click="hrefUrl(child)" >
                         <i class="icon-puzzle"></i> {{child.text}}
-                        <!--<span class="badge badge-danger">1000</span>-->
                     </a>
-
                 </li>
             </ul>
         </li>
     </ul>
-    <!-- END SIDEBAR MENU -->
 </div>

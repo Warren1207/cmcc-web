@@ -78,11 +78,101 @@ th, td { white-space: nowrap; }
 }
 
 /** 框架自带样式修改  start **/
+body {
+    background-color: #223646;
+}
 .page-header.navbar{
     background-color: #223646;
     height: 100px;
+    padding: 21px 0 26px 0;
 }
 .page-header.navbar .page-logo{
-    height: 100px;
+    margin-left: 63px;
+    width: 62px;
+    padding: initial;
+}
+.page-header-inner-title{
+    float: left;
+    display: block;
+    margin-left: 34px;
+}
+.page-header-inner-title .head-text-zh{
+    font-family: PingFangSC-Medium;
+    font-size: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 2px;
+    color: #ffffff;
+    width: 314px;
+    height: 24px;
+}
+.page-header-inner-title .head-text-en{
+    width: 390px;
+    height: 14px;
+    font-family: PingFangSC-Light;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+.page-header.navbar .search-form{
+    background:#223646;
+}
+.page-header-search-group{
+    float:left;
+    width: 250px;
+    padding: 7px;
+    position: relative;
+    margin-right: 54px;
+}
+.page-header-search-group input{
+    width: 250px;
+    height: 36px;
+    background-color: #344e62;
+    border-radius: 18px !important;
+    border: solid 1px #78a0c0;
+}
+.page-header-search-group .search-btn{
+    position: absolute;
+    right: 7px;
+    top: 18px;
+    color: #bad2e5;
+}
+.top-menu .icon-font-common{
+    width: 23px;
+    height: 26px;
+    font-size: 20px !important;
+    color: #bad2e5 !important;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown>.dropdown-toggle>.badge {
+    top: 3px;
+    right: 29px;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown .dropdown-toggle .badge.badge-default{
+    background-color: #ff0000;
+}
+.page-header-fixed .page-container{
+    margin-top: 100px;
+}
+.page-sidebar, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover{
+    background-color: #223646;
+}
+.page-sidebar-menu .first-group{
+    height: 60px;
+    background-color: #01b4c4;
+    text-align: center;
+    line-height: 60px;
+}
+.page-sidebar-menu .first-group i{
+    color: #ffffff;
+    font-size: 20px;
+}
+.page-sidebar-menu .first-group .title{
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 4px;
+    color: #ffffff;
 }
 /** 框架自带样式修改  End  **/
