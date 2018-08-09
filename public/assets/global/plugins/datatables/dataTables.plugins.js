@@ -65,9 +65,18 @@
                 var offset = 0,limit = 10;
                 data['page'] = data['start'] /data['length'];
                 data['size'] = data['length'];
-                delete data['columns']
-                delete data['start']
-                delete data['length']
+                delete data['columns'];
+                delete data['start'];
+                delete data['length'];
+                if($('.page-header-container').length>0){
+                    for(var att in data){
+                        if( att == 'search' || att == 'page'  || att == 'size'  || att == 'draw'  || att == 'order'){
+                            continue;
+                        }else{
+                            data[att] = $('.page-header-container [name='+att+']').val();
+                        }
+                    }
+                }
                 App.blockUI({
                     message: '数据加载中...',
                     target: 'body',
@@ -144,7 +153,7 @@
             }
             this.api = dt;
             this.c = $.extend( true, {}, {}, config );//<div class="form-inline">
-            var $el = $('<div class="col-md-12"> <div class="portlet light bordered">\
+/*            var $el = $('<div class="col-sm-12"> <div class="portlet light bordered">\
                 <div class="portlet-title">\
                     <div class="caption font-green-sharp"><span class="caption-subject bold uppercase">查询</span></div>\
                         <div class="tools">\
@@ -152,7 +161,8 @@
                         </div>\
                     </div>\
                  <div class="portlet-body"><div class="row"><div class="form-inline"></div></div></div>\
-                </div></div>');
+                </div></div>');*/
+            var $el = $('<div class="row"><div class="form-inline"></div></div>');
             this.dom = {
                 container: $el
             };
@@ -169,19 +179,19 @@
         },
         _formType : function (d){
             if(d['type']==='text'){
-                var i = '<input type="text" class="form-control" placeholder="" name="{name}" value="{value}" style="width: 100%;">'
+                var i = '<input type="text" class="form-control" placeholder="{text}" name="{name}" value="{value}" style="width: 100%;">'
                 var h = '<div class="input-group">' + i +  '' +
                     '<span class="input-group-btn">\
-                        <button class="btn btn-default btn-table-search" type="button">查询!</button>\
+                        <button class="btn btn-default btn-table-search" type="button">立即查询</button>\
                         </span>\
                     </div>'
                 return this._template(this.formItemCnt == 1 ? h : i,d);
             }else  if(d['type']==='date'){
-                return this._template('<input type="text" data-date-format="yyyy-mm-dd" data-date-zIndexOffset="100" data-date-pickerPosition="bottom-left" data-provide="datepicker" class="form-control" placeholder="" name="{name}" style="width: 100%;">',d);
+                return this._template('<input type="text" data-date-format="yyyy-mm-dd" data-date-zIndexOffset="100" data-date-pickerPosition="bottom-left" data-provide="datepicker" class="form-control" placeholder="{text}" name="{name}" style="width: 100%;">',d);
             }else if(d['type']==='select'){
                 var _html = [];
                 _html.push('<select class="form-control" name="{name}" style="width: 100%;">')
-                _html.push("<option value=''></option>")
+                _html.push("<option value=''>{text}</option>")
                 if($.isArray(d['data'])){
                     $.each(d['data'],function(){
                         _html.push('<option value="'+this.key+'">')
@@ -205,8 +215,8 @@
             }
             if($this.formItemCnt>0){
                 this.$form = this.container().find('.form-inline');
-                var tmp='<div class="{col}" style="margin-bottom:10px;"><label class="col-lg-3 control-label" style="line-height: 34px;">{text}</label>\
-                <div class="col-lg-9">{context}</div>\
+                var tmp='<div class="{col}" style="margin-bottom:10px;">\
+                <div class="col-sm-12">{context}</div>\
                 </div>';
                 $.each(this.c,function(i){
                     if(this.type=='hide'){
@@ -231,7 +241,7 @@
                 $this.api.form = $this.$form;
 
                 if($this.showSearchButton) {
-                    var $btn_htm = $('<div class="col-sm-12 line line-dashed b-b line-lg pull-in"  ></div><div class="col-sm-12" style="margin-bottom:10px;text-align: center;"> <button class="btn btn-default btn-table-search"><i class="fa fa-search"></i>查询</button> </div>');
+                    var $btn_htm = $('<div class="col-sm-3" style="margin-bottom:10px;text-align: center;"> <button class="btn btn-default btn-table-search">立即查询</button> </div>');
                     $this.$form.append($btn_htm)
                 }
                 this._searchTableEvent();
@@ -282,9 +292,17 @@
         },
         _searchTableEvent :function() {
             var $this = this;
+            /** modify by Warren Lee 2018-08-08 **/
+            var queryDom = $('.page-header-wl');
+            if(queryDom.length>0){
+                $(document).on('click','.page-header-wl button.btn-table-search',function(){
+                    $this._searchTableAction(); // 刷新表格数据，分页信息不会重置
+                });
+            }
+            /** modify by Warren Lee 2018-08-08 **/
             this.$form.find('button.btn-table-search').click(function () {
                 $this._searchTableAction(); // 刷新表格数据，分页信息不会重置
-            })
+            });
             $this.$form.keydown(function(e){
                 if(e.keyCode==13){
                     $this._searchTableAction();

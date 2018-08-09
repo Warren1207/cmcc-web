@@ -3581,7 +3581,7 @@
 			id:      oSettings.sTableId+'_wrapper',
 			'class': classes.sWrapper + (oSettings.nTFoot ? '' : ' '+classes.sNoFooter)
 		} );
-	
+
 		oSettings.nHolding = holding[0];
 		oSettings.nTableWrapper = insert[0];
 		oSettings.nTableReinsertBefore = oSettings.nTable.nextSibling;
@@ -3711,6 +3711,14 @@
 		}
 	
 		/* Built our DOM structure - replace the holding div with what we want */
+        /**  modify by Warren Lee 2018-08-07  让insert放在我的位置，而不是固定在table 前 **/
+        if($('.page-header-container').length>0){
+            var queryDom = $('.page-header-container');
+			var query = insert.children().first();
+			var queryForm = query.first().first();
+            queryDom.append(queryForm.clone());
+            query.remove();
+        }
 		holding.replaceWith( insert );
 		oSettings.nHolding = null;
 	}
