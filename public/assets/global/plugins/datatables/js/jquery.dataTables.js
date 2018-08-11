@@ -3712,8 +3712,8 @@
 	
 		/* Built our DOM structure - replace the holding div with what we want */
         /**  modify by Warren Lee 2018-08-07  让insert放在我的位置，而不是固定在table 前 **/
-        if($('.page-header-container').length>0){
-            var queryDom = $('.page-header-container');
+        if($('.page-header-container:visible').length>0){
+            var queryDom = $('.page-header-container:visible');
 			var query = insert.children().first();
 			var queryForm = query.first().first();
             queryDom.append(queryForm.clone());

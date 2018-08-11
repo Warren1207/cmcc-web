@@ -52,11 +52,20 @@
 <div class="page-container">
     <!-- BEGIN SIDEBAR -->
     <div data-ng-include="'tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper"> </div>
-
     <div class="page-content-wrapper">
-        <div class="page-content">
+        <div class="page-content" style="padding: 0;display: flex;flex-direction: column;">
+            <div class="page-bar" style="margin: 0;background-color: #f7f7f7;">
+                <a href="javascript:;" ng-click="navLeftFn()" class="page-nav-title-left-wl">
+                    <span class="fa fa-chevron-left"></span>
+                </a>
+                <ul class="page-breadcrumb page-nav-ul-wl">
+                </ul>
+                <a href="javascript:;" ng-click="navRightFn()" class="page-nav-title-right-wl">
+                    <span class="fa fa-chevron-right"></span>
+                </a>
+            </div>
             <!-- BEGIN ACTUAL CONTENT -->
-            <div ui-view class="fade-in-up">
+            <div ui-view class="fade-in-up" style="flex: 1; padding: 10px 20px 10px;">
             </div>
             <!--<div ui-view="desktop" class="fade-in-up"></div>-->
             <!--<div ui-view="/customerList" class="fade-in-up"></div>-->
@@ -72,7 +81,7 @@
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
-<!--<div data-ng-include="'tpl/footer.html'" data-ng-controller="FooterController" class="page-footer"> </div>-->
+<div data-ng-include="'tpl/footer.html'" data-ng-controller="FooterController" class="page-footer"> </div>
 <!-- END FOOTER -->
 <div class="quick-nav-overlay"></div>
 <!-- END QUICK NAV -->

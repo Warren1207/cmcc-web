@@ -141,7 +141,16 @@ app.controller('AppCtrl', ['$scope', '$window',
                 $scope.app.settings.container ? angular.element('html').addClass('bg') : angular.element('html').removeClass('bg');
             }, true);
 
-
+            $scope.navLeftFn = function(){
+                var left = $('.page-nav-ul-wl').scrollLeft();
+                $('.page-nav-ul-wl').scrollLeft(left+100);
+            };
+            $scope.navRightFn = function(){
+                var left = $('.page-nav-ul-wl').scrollLeft();
+                if(left>0){
+                    $('.page-nav-ul-wl').scrollLeft(left-100);
+                }
+            };
 
             function isSmartDevice( $window )
             {
@@ -157,7 +166,7 @@ app.controller('AppCtrl', ['$scope', '$window',
 
 
 /* Setup Layout Part - Header */
-app.controller('HeaderController', ['$scope','$rootScope','$state', function($scope,$rootScope,$state) {
+app.controller('HeaderController', ['$scope','$rootScope','$state','$compile', function($scope,$rootScope,$state,$compile) {
     $scope.$on('$includeContentLoaded', function() {
         Layout.initHeader(); // init header
     });
@@ -223,7 +232,13 @@ app.controller('HeaderController', ['$scope','$rootScope','$state', function($sc
         // $scope.headerArray = $rootScope.headerArray;
         // $state.go($rootScope.currentUrl);
     }
-
+    var ul = angular.element('.page-nav-ul-wl');
+    $compile(ul)($scope);
+    var li = angular.element('<li class="page-nav-title-wl" ng-class="{true : \'active\',false : \'\'}[header.url == currentUrl]" ng-repeat="header in headerArray">\n' +
+        '                        <span ng-click="selectTab(header)">{{header.text}} <i ng-click="closeTab($event,header)" class="fa fa-close cursor-wl"></i></span>\n' +
+        '                    </li>');
+    ul.append(li);
+    $compile(li)($scope);
 }]);
 
 /* Setup Layout Part - Sidebar */
@@ -259,21 +274,14 @@ app.controller('SidebarController', ['$state', '$scope','$profile','$rootScope',
                 $state.go('desktop.'+$rootScope.currentUrl);
             }
         }else {
-            if ($rootScope.headerArray.length >= 8) {
-                $profile.error("最多同时打开8个页面！", function () {
-
-                })
-            } else {
-                $rootScope.headerArray.push({
+            $rootScope.headerArray.push({
                 text: child.text,
                 url: child.url,
                 id: child.id,
                 pid: child.pid
-                });
+            });
             $rootScope.currentId = child.id;
             $rootScope.currentUrl = child.url;
-
-        }
         }
 
     };

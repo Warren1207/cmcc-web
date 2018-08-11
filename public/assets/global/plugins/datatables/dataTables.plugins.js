@@ -68,12 +68,12 @@
                 delete data['columns'];
                 delete data['start'];
                 delete data['length'];
-                if($('.page-header-container').length>0){
+                if($('.page-header-container:visible').length>0){
                     for(var att in data){
                         if( att == 'search' || att == 'page'  || att == 'size'  || att == 'draw'  || att == 'order'){
                             continue;
                         }else{
-                            data[att] = $('.page-header-container [name='+att+']').val();
+                            data[att] = $('.page-header-container:visible [name='+att+']').val();
                         }
                     }
                 }
